@@ -1,20 +1,20 @@
 package me.StevenLawson.BukkitTelnet;
 
+import dev.plex.config.Config;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import net.pravian.bukkitlib.YamlConfig;
 
 public class TelnetConfig
 {
-    private final YamlConfig config;
+    private final Config config;
     private final SimpleConfigEntries configEntries;
 
     private TelnetConfig()
     {
         configEntries = new SimpleConfigEntries();
-        config = new YamlConfig(BukkitTelnet.plugin, "config.yml", true);
+        config = new Config(BukkitTelnet.plugin, "config.yml");
     }
 
     public void loadConfig()
@@ -42,7 +42,7 @@ public class TelnetConfig
 
         if (configEntries.getPassword().isEmpty())
         {
-            configEntries.setPassword(config.getDefaultConfig().getString("password"));
+            configEntries.setPassword(config.getString("password"));
             TelnetLogger.warning("Password is undefined in config!");
             TelnetLogger.warning("Defaulting to " + configEntries.getPassword());
         }

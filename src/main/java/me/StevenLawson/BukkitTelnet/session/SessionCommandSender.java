@@ -1,6 +1,8 @@
 package me.StevenLawson.BukkitTelnet.session;
 
 import java.util.Set;
+import java.util.UUID;
+import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.Server;
 import org.bukkit.command.CommandSender;
@@ -8,6 +10,8 @@ import org.bukkit.permissions.Permission;
 import org.bukkit.permissions.PermissionAttachment;
 import org.bukkit.permissions.PermissionAttachmentInfo;
 import org.bukkit.plugin.Plugin;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public class SessionCommandSender implements CommandSender
 {
@@ -31,7 +35,34 @@ public class SessionCommandSender implements CommandSender
     }
 
     @Override
+    public @NotNull Spigot spigot()
+    {
+        return null;
+    }
+
+    @Override
+    public @NotNull Component name()
+    {
+        return null;
+    }
+
+    @Override
     public void sendMessage(String[] messages)
+    {
+        for (String message : messages)
+        {
+            sendMessage(message);
+        }
+    }
+
+    @Override
+    public void sendMessage(@Nullable UUID sender, @NotNull String message)
+    {
+        sendMessage(message);
+    }
+
+    @Override
+    public void sendMessage(@Nullable UUID sender, @NotNull String... messages)
     {
         for (String message : messages)
         {

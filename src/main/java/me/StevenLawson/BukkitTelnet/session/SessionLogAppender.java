@@ -56,7 +56,7 @@ public class SessionLogAppender extends AbstractAppender
         final Throwable ex = event.getThrown();
 
         builder.append("[");
-        builder.append(dateFormat.format(event.getMillis()));
+        builder.append(dateFormat.format(event.getTimeMillis()));
         builder.append(" ");
         builder.append(event.getLevel().name().toUpperCase());
         builder.append("]: ");
